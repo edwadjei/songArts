@@ -1,7 +1,7 @@
 var express = require('express'),
     app     = express(),
     fetch   = require('node-fetch'),
-    port=3000;
+    port    = process.env.PORT;
 
 app.set("view engine", "ejs");
 app.use("/public", express.static(__dirname +'/public'));
@@ -25,6 +25,9 @@ app.get('/search', (req, res)=>{
         getTracks(url,"search","error");
 })
 
+if (port == null || port == "") {
+    port = 3000;
+  }
 app.listen(port, function(){
     console.log("\x1b[32m%s\x1b[0m", "songArts is running on PORT: "+port)
 })
