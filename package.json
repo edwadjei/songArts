@@ -1,0 +1,34 @@
+{
+  "name": "songarts",
+  "version": "1.0.0",
+  "description": "A simple node app to generate official song/album cover arts",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A-Edd/songArts.git"
+  },
+  "keywords": [
+    "music",
+    "song",
+    "album",
+    "mp3",
+    "Deezer",
+    "Spotify",
+    "iTunes"
+  ],
+  "author": "A-E",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/A-Edd/songArts/issues"
+  },
+  "homepage": "https://github.com/A-Edd/songArts#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  }
+}

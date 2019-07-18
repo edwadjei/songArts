@@ -1,0 +1,178 @@
+/*
+
+All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 77). 
+        
+The 'supports' rule will only run if your browser supports CSS grid.
+
+Flexbox is used as a fallback so that browsers which don't support grid will still recieve an identical layout.
+
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:500);
+
+:root {
+	/* Base font size */
+	font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.container {
+	max-width: 100rem;
+	margin: 0 auto;
+	padding: 0 2rem 2rem;
+}
+
+.heading {
+	font-family: "Montserrat", Arial, sans-serif;
+	font-size: 4rem;
+	font-weight: 500;
+	line-height: 1.5;
+	text-align: center;
+	padding: 3.5rem 0 0 0;
+  color: #1a1a1a;
+  margin: 0;
+  text-decoration: none;
+}
+
+h1 {
+	margin: 0;
+}
+
+.heading span {
+	display: block;
+}
+.heading-desc{
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 5%
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	/* Compensate for excess margin on outer gallery flex items */
+	margin: -1rem -1rem;
+}
+
+.gallery-item {
+	/* Minimum width of 24rem and grow to fit available space */
+	flex: 1 0 24rem;
+	/* Margin value should be half of grid-gap value as margins on flex items don't collapse */
+	margin: 1rem;
+	box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+}
+
+.gallery-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease-out;
+}
+
+.gallery-image:hover {
+	transform: scale(1.15);
+}
+
+.search-bar {
+	background: #FFF no-repeat 9px center;
+  border: solid 1px #000;
+  padding: 9px 10px 9px 32px;
+  width: 58%;
+  margin:auto 20% 5% 20%;
+  outline: none;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  -webkit-transition: all .7s;
+  -moz-transition: all .7s;
+  transition: all .7s
+}
+
+@media only screen and (min-width: 600px) {
+	.search-bar:focus {
+		width: 95%;
+		margin: auto 2.5% 5% 2.5%;
+	}
+  }
+  
+.search-bar:focus {
+  border-color: #ff1a65;
+}
+
+a {
+	text-decoration-color: #ff1a65;
+	color: #ff1a65;
+}
+
+#ed {
+  font-family:  Montserrat;
+  font-weight: 400;
+  font-size: 2rem;
+  text-decoration: none;
+            color: #000;
+}
+#ed:hover{
+  color: #ff1a65;
+}
+
+button {
+    margin: 20px;
+    background: red;
+    border: none;
+    outline: none;
+    height: 25px;
+    text-align: center;
+    width: 100px;
+    border-radius: 15px;
+    background: #fff;
+    border: 2px solid #000;
+    color: #000;
+    letter-spacing: 1px;
+    text-shadow: 0;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    font-family: 'Roboto', sans-serif;
+}
+button:hover {
+	color: white;
+	background: #ff1a65;
+  }
+  
+/*
+
+The following rule will only run if your browser supports CSS grid.
+
+Remove or comment-out the code block below to see how the browser will fall-back to flexbox styling. 
+
+*/
+
+@supports (display: grid) {
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		grid-gap: 2rem;
+	}
+
+	.gallery,
+	.gallery-item {
+		margin: 0;
+	}
+}

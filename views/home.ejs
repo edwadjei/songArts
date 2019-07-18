@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+
+
+    
+    <form action="/search" method="GET">
+        <input class="search-bar" type="text" name="q" placeholder="song, album or artist">
+        
+    </form>
+    <div class="gallery">
+        <% tracks.tracks.data.forEach((track)=>{ %>
+        <div class="gallery item">
+            <div>
+                <img class="gallery-image" src="<%= track.album.cover_medium%>" alt="cover">
+                <div class="gallery-title" ><p style="text-align: center"> <%=track.title%> </p></div>
+            </div>
+            
+        </div>
+        <% })%>
+
+    </div>
+    
+
+
+<% include ./partials/footer %>
+
+
+

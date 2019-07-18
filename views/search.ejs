@@ -1,0 +1,40 @@
+<% include ./partials/header %>
+
+        <form action="/search" method="GET">
+            <input class="search-bar" type="text" name="q" value="<%=term%>">
+        </form>
+        <h2 id="search-term"> <span id="total"><%=tracks.total%><span> search results for "<%=term%>"</h2>
+        <% if(tracks.data === undefined || tracks.data.length == 0){ %>
+            <script> document.querySelector('#total').style.color="red" </script>
+        <% } %>
+        
+        <div class="gallery">
+        <% tracks.data.forEach((track)=>{ %>
+        <div class="gallery item">
+            <div>
+                <a href="<%=track.album.cover_xl%>">
+                    <img class="gallery-image" src="<%= track.album.cover_medium%>" alt="cover">
+                </a>
+                <div class="gallery-title" > 
+                    <p> <%=track.title_short%>:  
+                        <a href="<%=track.album.cover_xl%>">XL</a>
+                        <a href="<%=track.album.cover_big%>">L</a>
+                        <a href="<%=track.album.cover_medium%>">M</a>
+                        <a href="<%=track.album.cover_small%>">S</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% })%>
+        </div>
+
+        <% if(tracks.prev){ %>
+            <a id="prev" href="/search?q=<%=term%>&index<%=tracks.prev.split("index")[1]%>">
+                <button>Prev</button></a>
+        <% } %>
+        <% if(tracks.next){ %>
+            <a id="next" href="/search?q=<%=term%>&index<%=tracks.next.split("index")[1]%>">
+            <button>Next</button></a>
+        <% } %>
+
+<% include ./partials/footer %>
